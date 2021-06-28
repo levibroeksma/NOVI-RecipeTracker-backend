@@ -1,6 +1,9 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -36,6 +39,16 @@ public class Recipe {
     @Column(name = "spicy")
     private boolean spicy;
 
+    @Column(name = "country")
+    private String country;
+
+    @OneToMany(mappedBy = "recipe")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    List<Ingredients> ingredients;
+
+    @Lob
+    byte[] recipeImage;
+
     public Recipe(String title, String description, boolean b) {
         this.title = title;
         this.description = description;
@@ -46,6 +59,8 @@ public class Recipe {
         this.vegan = vegan;
         this.vegetarian = vegetarian;
         this.spicy = spicy;
+        this.recipeImage = recipeImage;
+        this.country = country;
     }
 
     // Getters
@@ -90,6 +105,14 @@ public class Recipe {
         return spicy;
     }
 
+    public byte[] getRecipeImage() {
+        return recipeImage;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     //Setters
 
     public void setTitle(String title) {
@@ -128,8 +151,16 @@ public class Recipe {
         this.spicy = spicy;
     }
 
+    public void setRecipeImage(byte[] recipeImage) {
+        this.recipeImage = recipeImage;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public String toString() {
-        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy + "]";
+        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy +  ", country=" + country + "]";
     }
 }

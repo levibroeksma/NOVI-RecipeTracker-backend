@@ -2,7 +2,9 @@ package com.recipetracker.finalversionrecipetracker.demo.controller;
 
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import com.recipetracker.finalversionrecipetracker.demo.repository.RecipeRepository;
+import com.recipetracker.finalversionrecipetracker.demo.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -80,6 +82,7 @@ public class RecipeController {
             _recipe.setVegan(recipe.isVegan());
             _recipe.setVegetarian(recipe.isVegetarian());
             _recipe.setSpicy(recipe.isSpicy());
+            _recipe.setCountry(recipe.getCountry());
             return new ResponseEntity<>(recipeRepository.save(_recipe), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -97,10 +100,24 @@ public class RecipeController {
         }
     }
 
-    // FIND BY BOOLEANS
+    // FIND BY
+
+    @GetMapping("/recipes/country")
+    public ResponseEntity<List<Recipe>> findByCountry(String country) {
+        try {
+            List<Recipe> recipes = recipeRepository.findByCountry(country);
+
+            if (recipes.isEmpty()) {
+                return new ResponseEntity<>(recipes, HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(recipes, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/recipes/beef")
-    public ResponseEntity<List<Recipe>> findByBeef() {
+    public ResponseEntity<List<Recipe>> findByBeef(boolean beef) {
         try {
             List<Recipe> recipes = recipeRepository.findByBeef(true);
 
@@ -114,7 +131,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/fish")
-    public ResponseEntity<List<Recipe>> findByFish() {
+    public ResponseEntity<List<Recipe>> findByFish(boolean fish) {
         try {
             List<Recipe> recipes = recipeRepository.findByFish(true);
 
@@ -128,7 +145,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/lamb")
-    public ResponseEntity<List<Recipe>> findByLamb() {
+    public ResponseEntity<List<Recipe>> findByLamb(boolean lamb) {
         try {
             List<Recipe> recipes = recipeRepository.findByLamb(true);
 
@@ -142,7 +159,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/pork")
-    public ResponseEntity<List<Recipe>> findByPork() {
+    public ResponseEntity<List<Recipe>> findByPork(boolean pork) {
         try {
             List<Recipe> recipes = recipeRepository.findByPork(true);
 
@@ -156,7 +173,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/vegan")
-    public ResponseEntity<List<Recipe>> findByVegan() {
+    public ResponseEntity<List<Recipe>> findByVegan(boolean vegan) {
         try {
             List<Recipe> recipes = recipeRepository.findByVegan(true);
 
@@ -169,7 +186,7 @@ public class RecipeController {
         }
     }
     @GetMapping("/recipes/vegetarian")
-    public ResponseEntity<List<Recipe>> findByVegetarian() {
+    public ResponseEntity<List<Recipe>> findByVegetarian(boolean vegetarian) {
         try {
             List<Recipe> recipes = recipeRepository.findByVegetarian(true);
 
@@ -182,7 +199,7 @@ public class RecipeController {
         }
     }
     @GetMapping("/recipes/spicy")
-    public ResponseEntity<List<Recipe>> findBySpicy() {
+    public ResponseEntity<List<Recipe>> findBySpicy(boolean spicy) {
         try {
             List<Recipe> recipes = recipeRepository.findBySpicy(true);
 

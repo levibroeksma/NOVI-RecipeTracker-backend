@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findByBeef(boolean beef);
+    List<Recipe> findByCountry(String country);
+    List<Recipe> findByRecipeImage(byte[] recipeImage);
     List<Recipe> findByFish(boolean fish);
     List<Recipe> findByLamb(boolean lamb);
     List<Recipe> findByPork(boolean pork);
