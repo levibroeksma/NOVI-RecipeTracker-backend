@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.response;
+package com.recipetracker.finalversionrecipetracker.demo.auth.payload.response;
 
 public class MessageResponse {
     private String message;

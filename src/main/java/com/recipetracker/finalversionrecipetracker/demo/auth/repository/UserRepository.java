@@ -1,8 +1,8 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.Repository;
+package com.recipetracker.finalversionrecipetracker.demo.auth.repository;
 
 import java.util.Optional;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.User;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

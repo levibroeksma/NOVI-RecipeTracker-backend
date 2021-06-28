@@ -1,7 +1,7 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security.services;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security.services;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Repository.UserRepository;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.User;
+import com.recipetracker.finalversionrecipetracker.demo.auth.repository.UserRepository;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

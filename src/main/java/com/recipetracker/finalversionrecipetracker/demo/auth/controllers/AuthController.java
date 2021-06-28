@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.controllers;
+package com.recipetracker.finalversionrecipetracker.demo.auth.controllers;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,17 +7,17 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.request.LoginRequest;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.request.SignupRequest;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.response.JwtResponse;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.response.MessageResponse;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Repository.RoleRepository;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.Repository.UserRepository;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.ERole;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.Role;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.User;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt.JwtUtils;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.services.UserDetailsImpl;
+import com.recipetracker.finalversionrecipetracker.demo.auth.payload.request.LoginRequest;
+import com.recipetracker.finalversionrecipetracker.demo.auth.payload.request.SignupRequest;
+import com.recipetracker.finalversionrecipetracker.demo.auth.payload.response.JwtResponse;
+import com.recipetracker.finalversionrecipetracker.demo.auth.payload.response.MessageResponse;
+import com.recipetracker.finalversionrecipetracker.demo.auth.repository.RoleRepository;
+import com.recipetracker.finalversionrecipetracker.demo.auth.repository.UserRepository;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.ERole;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.Role;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.User;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt.JwtUtils;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

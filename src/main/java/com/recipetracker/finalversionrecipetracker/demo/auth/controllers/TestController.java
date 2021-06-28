@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.controllers;
+package com.recipetracker.finalversionrecipetracker.demo.auth.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;

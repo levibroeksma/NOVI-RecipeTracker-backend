@@ -1,7 +1,7 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security.services;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.models.User;
+import com.recipetracker.finalversionrecipetracker.demo.auth.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

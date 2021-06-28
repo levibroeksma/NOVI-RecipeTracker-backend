@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.services.UserDetailsServiceImpl;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired

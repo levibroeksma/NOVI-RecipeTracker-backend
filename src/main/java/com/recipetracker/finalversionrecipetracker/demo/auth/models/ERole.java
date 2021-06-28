@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.models;
+package com.recipetracker.finalversionrecipetracker.demo.auth.models;
 
 public enum ERole {
     ROLE_USER,

@@ -1,6 +1,6 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.services.UserDetailsImpl;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

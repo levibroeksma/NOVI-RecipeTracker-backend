@@ -1,8 +1,8 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security;
 
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt.AuthEntryPointJwt;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt.AuthTokenFilter;
-import com.recipetracker.finalversionrecipetracker.demo.Auth.security.services.UserDetailsServiceImpl;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt.AuthEntryPointJwt;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt.AuthTokenFilter;
+import com.recipetracker.finalversionrecipetracker.demo.auth.security.services.UserDetailsServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

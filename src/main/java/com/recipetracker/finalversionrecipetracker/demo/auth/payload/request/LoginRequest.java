@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.Payload.request;
+package com.recipetracker.finalversionrecipetracker.demo.auth.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

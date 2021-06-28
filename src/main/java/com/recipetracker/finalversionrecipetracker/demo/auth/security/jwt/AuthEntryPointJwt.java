@@ -1,4 +1,4 @@
-package com.recipetracker.finalversionrecipetracker.demo.Auth.security.jwt;
+package com.recipetracker.finalversionrecipetracker.demo.auth.security.jwt;
 
 import java.io.IOException;
 import java.util.HashMap;
