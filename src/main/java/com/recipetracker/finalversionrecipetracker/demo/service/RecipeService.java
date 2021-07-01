@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface RecipeService {
 
-    static void getRecipeImage(Long id) {
-    }
+    static void getRecipeImage(Long id) { }
 
     List<Recipe> getRecipes();
 

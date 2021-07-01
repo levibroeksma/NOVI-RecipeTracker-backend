@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Ingredients {
+public class Directions {
 
     @Id
     @GeneratedValue

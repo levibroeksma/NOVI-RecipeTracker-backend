@@ -1,6 +1,7 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -43,8 +44,16 @@ public class Recipe {
     private String country;
 
     @OneToMany(mappedBy = "recipe")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(CascadeType.ALL)
     List<Ingredients> ingredients;
+
+    @OneToMany(mappedBy = "recipe")
+    @Cascade(CascadeType.ALL)
+    List<Directions> directions;
+
+    @OneToMany(mappedBy = "recipe")
+    @Cascade(CascadeType.ALL)
+    List<Comments> comments;
 
     @Lob
     byte[] recipeImage;
@@ -61,6 +70,9 @@ public class Recipe {
         this.spicy = spicy;
         this.recipeImage = recipeImage;
         this.country = country;
+        this.directions = directions;
+        this.ingredients = ingredients;
+        this.comments = comments;
     }
 
     // Getters
@@ -113,6 +125,18 @@ public class Recipe {
         return country;
     }
 
+    public List<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public List<Directions> getDirections() {
+        return directions;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
     //Setters
 
     public void setTitle(String title) {
@@ -159,8 +183,20 @@ public class Recipe {
         this.country = country;
     }
 
+    public void setIngredients(List<Ingredients> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setDirections(List<Directions> directions) {
+        this.directions = directions;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public String toString() {
-        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy +  ", country=" + country + "]";
+        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy +  ", country=" + country +  ", ingredients=" + ingredients +  ", directions=" + directions +   ", comments=" + comments + "]";
     }
 }
