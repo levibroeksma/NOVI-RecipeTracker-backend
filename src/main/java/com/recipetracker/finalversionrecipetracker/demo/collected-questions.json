@@ -1,0 +1,39 @@
+//This is the JSON file that I send to my application, however it doesnt accept the arrays with objects
+
+{
+  "id": 2,
+  "title": "pasta carbonara",
+  "description": "An Italian classic",
+  "beef": false,
+  "fish": false,
+  "lamb": false,
+  "pork": true,
+  "vegan": false,
+  "vegetarian": false,
+  "spicy": false,
+  "country": "italy",
+  "ingredients": [
+    {
+      "ingredient": "Penne"
+    },
+    {
+      "ingredient": "Guancialle"
+    },
+    {
+      "ingredient": "Egg"
+    },
+    {
+      "ingredient": "Parmiggiano Regianno"
+    }
+  ],
+  "directions": [
+    {
+      "direction": "Boil the pasta, in water salty as the sea."
+    },
+    {
+      "direction": "Cut the Guancialle in small cubes."
+    }
+  ],
+  "comments": null,
+  "recipeImage": null
+}
