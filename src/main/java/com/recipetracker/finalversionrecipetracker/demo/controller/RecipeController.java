@@ -64,9 +64,9 @@ public class RecipeController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTipAmsterdamById(@PathVariable("id") Long id) throws IOException {
-//        String fileName = getRecipe(id).getPicturePath();
+        String fileName = getRecipe(id).getPicturePath();
         recipeService.deleteRecipe(id);
-//        fileStorageService.deleteFile(fileName);
+        fileStorageService.deleteFile(fileName);
         return ResponseEntity.noContent().build();
     }
 

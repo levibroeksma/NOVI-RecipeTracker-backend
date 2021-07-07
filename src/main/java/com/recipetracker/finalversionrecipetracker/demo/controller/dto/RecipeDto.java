@@ -7,6 +7,7 @@ public class RecipeDto {
     public String title;
     public String description;
     public boolean isBeef;
+//    public boolean isFish;
 
     public static RecipeDto fromRecipe (Recipe recipe) {
         var dto = new RecipeDto();
@@ -14,6 +15,7 @@ public class RecipeDto {
         dto.title = recipe.getTitle();
         dto.description = recipe.getDescription();
         dto.isBeef = recipe.isBeef();
+//        dto.isFish = recipe.isFish();
         return dto;
     }
 }

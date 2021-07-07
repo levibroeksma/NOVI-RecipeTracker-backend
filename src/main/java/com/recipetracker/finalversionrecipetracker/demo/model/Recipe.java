@@ -13,38 +13,38 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "title")
     private String title;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "beef")
     private boolean beef;
 
     @Column
     private String picturePath;
 
-//    @Column(name = "fish")
-//    private boolean fish;
-//
-//    @Column(name = "lamb")
-//    private boolean lamb;
-//
-//    @Column(name = "pork")
-//    private boolean pork;
-//
-//    @Column(name = "vegan")
-//    private boolean vegan;
-//
-//    @Column(name = "vegetarian")
-//    private boolean vegetarian;
-//
-//    @Column(name = "spicy")
-//    private boolean spicy;
-//
-//    @Column(name = "country")
-//    private String country;
+    @Column(name = "fish")
+    private boolean fish;
+
+    @Column(name = "lamb")
+    private boolean lamb;
+
+    @Column(name = "pork")
+    private boolean pork;
+
+    @Column(name = "vegan")
+    private boolean vegan;
+
+    @Column(name = "vegetarian")
+    private boolean vegetarian;
+
+    @Column(name = "spicy")
+    private boolean spicy;
+
+    @Column(name = "country")
+    private String country;
 
 //    @OneToMany(mappedBy = "recipe")
 //    @Cascade(CascadeType.ALL)
@@ -58,26 +58,22 @@ public class Recipe {
 //    @Cascade(CascadeType.ALL)
 //    List<Comments> comments;
 
-//    @Lob
-//    byte[] recipeImage;
-
     public Recipe(){
 
     }
 
-    public Recipe(String title, String description, boolean isBeef) {
+    public Recipe(String title, String description, boolean isBeef, boolean isFish) {
         this.title = title;
         this.description = description;
         this.beef = isBeef;
         this.picturePath = picturePath;
-//        this.fish = fish;
-//        this.lamb = lamb;
-//        this.pork = pork;
-//        this.vegan = vegan;
-//        this.vegetarian = vegetarian;
-//        this.spicy = spicy;
-//        this.recipeImage = recipeImage;
-//        this.country = country;
+        this.fish = isFish;
+        this.lamb = lamb;
+        this.pork = pork;
+        this.vegan = vegan;
+        this.vegetarian = vegetarian;
+        this.spicy = spicy;
+        this.country = country;
 //        this.directions = directions;
 //        this.ingredients = ingredients;
 //        this.comments = comments;
@@ -104,43 +100,16 @@ public class Recipe {
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
     }
-//    public boolean isBeef() {
-//        return beef;
-//    }
 
-//    public boolean isFish() {
-//        return fish;
-//    }
-//
-//    public boolean isLamb() {
-//        return lamb;
-//    }
-//
-//    public boolean isPork() {
-//        return pork;
-//    }
-//
-//    public boolean isVegan() {
-//        return vegan;
-//    }
-//
-//    public boolean isVegetarian() {
-//        return vegetarian;
-//    }
-//
-//    public boolean isSpicy() {
-//        return spicy;
-//    }
-//
-//    public byte[] getRecipeImage() {
-//        return recipeImage;
-//    }
-//
-//    public String getCountry() {
-//        return country;
-//    }
+    public String getCountry() {
+        return country;
+    }
 
-//    public List<Ingredients> getIngredients() {
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    //    public List<Ingredients> getIngredients() {
 //        return ingredients;
 //    }
 //
@@ -162,10 +131,6 @@ public class Recipe {
         this.description = description;
     }
 
-//    public void setBeef(boolean isBeef) {
-//        this.beef = isBeef;
-//    }
-
     public boolean isBeef() {
         return beef;
     }
@@ -174,31 +139,57 @@ public class Recipe {
         this.beef = beef;
     }
 
-//    public void setFish(boolean fish) {
-//        this.fish = fish;
-//    }
-//
-//    public void setLamb(boolean lamb) {
-//        this.lamb = lamb;
-//    }
-//
-//    public void setPork(boolean pork) {
-//        this.pork = pork;
-//    }
-//
-//    public void setVegan(boolean vegan) {
-//        this.vegan = vegan;
-//    }
-//
-//    public void setVegetarian(boolean vegetarian) {
-//        this.vegetarian = vegetarian;
-//    }
-//
-//    public void setSpicy(boolean spicy) {
-//        this.spicy = spicy;
-//    }
-//
-//    public void setRecipeImage(byte[] recipeImage) {
+    public boolean isFish() {
+        return fish;
+    }
+
+    public void setFish(boolean fish) {
+        this.fish = fish;
+    }
+
+    public boolean isLamb() {
+        return lamb;
+    }
+
+    public void setLamb(boolean lamb) {
+        this.lamb = lamb;
+    }
+
+    public boolean isPork() {
+        return pork;
+    }
+
+    public void setPork(boolean pork) {
+        this.pork = pork;
+    }
+
+    public boolean isVegan() {
+        return vegan;
+    }
+
+    public void setVegan(boolean vegan) {
+        this.vegan = vegan;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
+        this.vegetarian = vegetarian;
+    }
+
+    public boolean isSpicy() {
+        return spicy;
+    }
+
+    public void setSpicy(boolean spicy) {
+        this.spicy = spicy;
+    }
+
+
+
+    //    public void setRecipeImage(byte[] recipeImage) {
 //        this.recipeImage = recipeImage;
 //    }
 //
