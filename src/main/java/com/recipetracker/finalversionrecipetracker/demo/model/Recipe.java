@@ -1,5 +1,6 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
+import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -7,11 +8,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "recipes")
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column
+    private String username;
 
     @Column(name = "title")
     private String title;
@@ -46,6 +54,8 @@ public class Recipe {
     @Column(name = "country")
     private String country;
 
+
+
 //    @OneToMany(mappedBy = "recipe")
 //    @Cascade(CascadeType.ALL)
 //    List<Ingredients> ingredients;
@@ -62,18 +72,20 @@ public class Recipe {
 
     }
 
-    public Recipe(String title, String description, boolean isBeef, boolean isFish) {
+    public Recipe(String title, String description, String country, String username, String location, boolean isBeef, boolean isFish, boolean isLamb, boolean isPork, boolean isVegan, boolean isVegetarian, boolean isSpicy) {
         this.title = title;
         this.description = description;
+        this.username = username;
         this.beef = isBeef;
         this.picturePath = picturePath;
         this.fish = isFish;
-        this.lamb = lamb;
-        this.pork = pork;
-        this.vegan = vegan;
-        this.vegetarian = vegetarian;
-        this.spicy = spicy;
+        this.lamb = isLamb;
+        this.pork = isPork;
+        this.vegan = isVegan;
+        this.vegetarian = isVegetarian;
+        this.spicy = isSpicy;
         this.country = country;
+        this.location = location;
 //        this.directions = directions;
 //        this.ingredients = ingredients;
 //        this.comments = comments;
@@ -83,6 +95,14 @@ public class Recipe {
 
     public Long getId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getTitle() {
@@ -109,6 +129,14 @@ public class Recipe {
         this.country = country;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     //    public List<Ingredients> getIngredients() {
 //        return ingredients;
 //    }
@@ -120,8 +148,6 @@ public class Recipe {
 //    public List<Comments> getComments() {
 //        return comments;
 //    }
-
-    //Setters
 
     public void setTitle(String title) {
         this.title = title;
@@ -189,10 +215,7 @@ public class Recipe {
 
 
 
-    //    public void setRecipeImage(byte[] recipeImage) {
-//        this.recipeImage = recipeImage;
-//    }
-//
+
 //    public void setCountry(String country) {
 //        this.country = country;
 //    }
@@ -212,6 +235,6 @@ public class Recipe {
     @Override
     public String toString() {
 //        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy +  ", country=" + country +  ", ingredients=" + ingredients +  ", directions=" + directions +   ", comments=" + comments + "]";
-        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + "]";
+        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", beef=" + beef + ", fish=" + fish + ", lamb=" + lamb + ", pork=" + pork + ", vegan=" + vegan + ", vegetarian=" + vegetarian + ", spicy=" + spicy +  ", country=" + country +  ", username=" + username +  ", location=" + location + "]";
     }
 }

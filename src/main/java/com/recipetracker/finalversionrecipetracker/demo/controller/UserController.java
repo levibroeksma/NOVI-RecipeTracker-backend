@@ -3,13 +3,16 @@ package com.recipetracker.finalversionrecipetracker.demo.controller;
 import com.recipetracker.finalversionrecipetracker.demo.exceptions.BadRequestException;
 import com.recipetracker.finalversionrecipetracker.demo.model.User;
 import com.recipetracker.finalversionrecipetracker.demo.service.UserService;
+import com.recipetracker.finalversionrecipetracker.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -18,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> getUsers() {
@@ -39,10 +45,23 @@ public class UserController {
         return ResponseEntity.created(location).build();
     }
 
+//    @PutMapping(value = "/{username}")
+//    public ResponseEntity<Object> updateUser(@PathVariable("username") String username, @RequestBody User user) {
+//        userService.updateUser(username, user);
+//        return ResponseEntity.noContent().build();
+//    }
+
     @PutMapping(value = "/{username}")
-    public ResponseEntity<Object> updateUser(@PathVariable("username") String username, @RequestBody User user) {
-        userService.updateUser(username, user);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
+        Optional<User> userData = userRepository.findById(username);
+
+        if (userData.isPresent()) {
+            User _user = userData.get();
+            _user.setEnabled(user.isEnabled());
+            return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping(value = "/{username}")

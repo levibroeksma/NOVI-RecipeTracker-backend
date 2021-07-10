@@ -4,12 +4,14 @@ public class AuthenticationRequest {
 
     private String username;
     private String password;
+//    private boolean enabled;
 
     public AuthenticationRequest() {
     }
-    public AuthenticationRequest(String username, String password) {
+    public AuthenticationRequest(String username, String password, boolean enabled) {
         this.username = username;
         this.password = password;
+//        this.enabled = enabled;
     }
 
     public String getUsername() {
@@ -24,5 +26,10 @@ public class AuthenticationRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
+//    public void setEnabled(boolean enabled) {
+//        this.enabled = enabled;
+//    }
 }
