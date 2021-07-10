@@ -1,8 +1,10 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller;
 
+import com.recipetracker.finalversionrecipetracker.demo.model.User;
 import com.recipetracker.finalversionrecipetracker.demo.payload.AuthenticationRequest;
 import com.recipetracker.finalversionrecipetracker.demo.payload.AuthenticationResponse;
 import com.recipetracker.finalversionrecipetracker.demo.service.CustomUserDetailsService;
+import com.recipetracker.finalversionrecipetracker.demo.service.UserService;
 import com.recipetracker.finalversionrecipetracker.demo.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -24,6 +27,9 @@ public class AuthenticationController {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     JwtUtil jwtUtl;
@@ -39,21 +45,32 @@ public class AuthenticationController {
         String username = authenticationRequest.getUsername();
         String password = authenticationRequest.getPassword();
 
+
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password)
+//                  new UsernamePasswordAuthenticationToken(username, password, enabled === true)
             );
         }
         catch (BadCredentialsException ex) {
             throw new Exception("Incorrect username or password", ex);
         }
 
+
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(username);
 
-        final String jwt = jwtUtl.generateToken(userDetails);
+        Optional<User> user = userService.getUser(username);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        if(user.get().isEnabled()) {
+            final String jwt = jwtUtl.generateToken(userDetails);
+
+            return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        } else {
+            throw new Exception("This account has been deactivated");
+        }
+
+
     }
 
 }

@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface RecipeService {
 
     public abstract Collection<Recipe> getRecipes();
+
     List<Recipe> getAllRecipes();
 
     public abstract String createRecipe(Recipe recipe);

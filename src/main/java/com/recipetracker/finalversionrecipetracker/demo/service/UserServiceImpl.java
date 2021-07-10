@@ -60,6 +60,7 @@ public class UserServiceImpl implements com.recipetracker.finalversionrecipetrac
         if (!userRepository.existsById(username)) throw new RecordNotFoundException();
         User user = userRepository.findById(username).get();
         user.setPassword(newUser.getPassword());
+        user.setEnabled(newUser.isEnabled());
         userRepository.save(user);
     }
 

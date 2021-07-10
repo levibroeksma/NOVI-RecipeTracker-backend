@@ -3,6 +3,7 @@ package com.recipetracker.finalversionrecipetracker.demo.service;
 import com.recipetracker.finalversionrecipetracker.demo.exceptions.IdNotFoundException;
 import com.recipetracker.finalversionrecipetracker.demo.exceptions.NotFoundException;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
+
 import com.recipetracker.finalversionrecipetracker.demo.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -16,8 +17,9 @@ import java.util.*;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
-
+    @Autowired
     private RecipeRepository recipeRepository;
+
     Path uploads = Paths.get("./uploads");
 
     @Autowired
@@ -53,15 +55,11 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepository.deleteById(id);
     }
 
-//    @Override
-//    public void addRecipe(Recipe recipe) {
-//
-//    }
-
     @Override
     public String createRecipe(Recipe recipe){
         recipe.setTitle(recipe.getTitle());
         recipe.setDescription(recipe.getDescription());
+        recipe.setLocation(recipe.getLocation());
         Recipe newRecipe = recipeRepository.save(recipe);
         return newRecipe.getTitle();
     }
@@ -86,6 +84,5 @@ public class RecipeServiceImpl implements RecipeService {
         }
         return null;
     }
-
 
 }

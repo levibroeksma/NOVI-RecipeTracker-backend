@@ -41,34 +41,50 @@ public class User {
             fetch = FetchType.EAGER)
     private Set<com.recipetracker.finalversionrecipetracker.demo.model.Authority> authorities = new HashSet<>();
 
+    @OneToMany(
+            targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Recipe.class,
+            mappedBy = "username",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    private Set<com.recipetracker.finalversionrecipetracker.demo.model.Recipe> recipes = new HashSet<>();
+
+    // username
     public String getUsername() { return username; }
     public void setUsername(String username) {
         this.username = username;
     }
+    // password
     public String getPassword() {
         return password;
     }
     public void setPassword(String password) {
         this.password = password;
     }
+    // enabled
     public boolean isEnabled() { return enabled;}
     public void setEnabled(boolean enabled) { this.enabled = enabled; }
+    // apikey
     public String getApikey() { return apikey; }
     public void setApikey(String apikey) { this.apikey = apikey; }
+    //email
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email;}
+    //first name
     public String getFirstName() {
         return firstName;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    //last name
     public String getLastName() {
         return lastName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    //newletter
     public boolean isNewsLetter() {
         return newsLetter;
     }

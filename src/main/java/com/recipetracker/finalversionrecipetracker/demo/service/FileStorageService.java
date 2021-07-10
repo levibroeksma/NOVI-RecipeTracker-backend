@@ -1,11 +1,12 @@
 package com.recipetracker.finalversionrecipetracker.demo.service;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
+import com.recipetracker.finalversionrecipetracker.demo.controller.dto.FileStorageRequestDto;
+import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 
 public interface FileStorageService {
-    void uploadFile(MultipartFile picturePath);
-
-    void deleteFile(String filename) throws IOException;
+    void init();
+    Iterable<Recipe> getFiles();
+    boolean fileExistsById(long id);
+    long uploadFile(FileStorageRequestDto method1Dto);
+    void deleteFile(long id);
 }

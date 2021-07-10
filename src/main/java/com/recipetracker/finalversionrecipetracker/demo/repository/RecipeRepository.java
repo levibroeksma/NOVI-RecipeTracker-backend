@@ -3,8 +3,10 @@ package com.recipetracker.finalversionrecipetracker.demo.repository;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
-//    List<Recipe> findByTitleContaining(String title);
+    List<Recipe> findByTitleContaining(String title);
 //    List<Recipe> findByBeef(boolean beef);
 //    List<Recipe> findByCountry(String country);
 //    List<Recipe> findByRecipeImage(byte[] recipeImage);
