@@ -1,68 +1,58 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller;
 
+import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeRequestDto;
+import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeResponseDto;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
-import com.recipetracker.finalversionrecipetracker.demo.repository.RecipeRepository;
-import com.recipetracker.finalversionrecipetracker.demo.service.FileStorageService;
 import com.recipetracker.finalversionrecipetracker.demo.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.io.IOException;
 import java.net.URI;
-import java.util.List;
-import java.util.Optional;
 
-@CrossOrigin
 @RestController
-@RequestMapping("/api/recipes")
+@RequestMapping("api/recipes")
+@CrossOrigin
 public class RecipeController {
 
     @Autowired
     RecipeService recipeService;
 
-    @Autowired
-    RecipeRepository recipeRepository;
+    @GetMapping("")
+    public ResponseEntity<Object> getRecipes() {
+        Iterable<Recipe> files = recipeService.getFiles();
+        return ResponseEntity.ok().body(files);
+    }
 
-    @Autowired
-    FileStorageService fileStorageService;
-
-    @Autowired
-    @GetMapping
-    public List<Recipe> getAllRecipes(){
-//        Iterable<Recipe> files = fileStorageService.getFiles();
-        return recipeService.getAllRecipes();
-
-    };
+    @GetMapping("/{id}/fileName")
+    public ResponseEntity downloadFile(@PathVariable("id") Long id) {
+        Resource resource = recipeService.downloadFile(id);
+        String fileName = "application/octet-stream";
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(fileName))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
+    }
 
     @GetMapping("/{id}")
-    public Recipe getRecipe(@PathVariable("id") Long id) {
-        return recipeService.getRecipe(id);
+    public ResponseEntity<Object> getRecipeInfo(@PathVariable long id) {
+        RecipeResponseDto response = recipeService.getFileById(id);
+        return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping("/recipes/{id}")
-    public ResponseEntity<Object> getRecipeById(@PathVariable("id") Long id) {
-        Optional<Recipe> recipe = recipeService.getRecipeById(id);
-        return new ResponseEntity<>(recipe, HttpStatus.OK);
-    }
+    @PostMapping(value = "",
+            produces = {MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity<Object> uploadRecipe(RecipeRequestDto recipeRequestDto) {
+        long newId = recipeService.uploadFile(recipeRequestDto);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteTipAmsterdamById(@PathVariable("id") Long id) throws IOException {
-        recipeService.deleteRecipe(id);
-        return ResponseEntity.noContent().build();
-    }
-    @PostMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Object> createRecipe(@RequestBody Recipe recipe) {
-        String newTitle = recipeService.createRecipe(recipe);
-        String newDescriptions = recipeService.createRecipe(recipe);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(newId).toUri();
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/recipes")
-                .buildAndExpand(newTitle, newDescriptions).toUri();
-
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(location);
     }
 
 }

@@ -33,6 +33,9 @@ public class User {
     @Column
     private boolean newsLetter = false;
 
+    @Column
+    private String country;
+
     @OneToMany(
             targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Authority.class,
             mappedBy = "username",
@@ -41,13 +44,13 @@ public class User {
             fetch = FetchType.EAGER)
     private Set<com.recipetracker.finalversionrecipetracker.demo.model.Authority> authorities = new HashSet<>();
 
-    @OneToMany(
-            targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Recipe.class,
-            mappedBy = "username",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private Set<com.recipetracker.finalversionrecipetracker.demo.model.Recipe> recipes = new HashSet<>();
+//    @OneToMany(
+//            targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Recipe.class,
+//            mappedBy = "username",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true,
+//            fetch = FetchType.EAGER)
+//    private Set<com.recipetracker.finalversionrecipetracker.demo.model.Recipe> recipes = new HashSet<>();
 
     // username
     public String getUsername() { return username; }
@@ -90,6 +93,13 @@ public class User {
     }
     public void setNewsLetter(boolean newsLetter) {
         this.newsLetter = newsLetter;
+    }
+    //country
+    public String getCountry() {
+        return country;
+    }
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Set<Authority> getAuthorities() { return authorities; }
