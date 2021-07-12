@@ -3,9 +3,7 @@ package com.recipetracker.finalversionrecipetracker.demo.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -14,7 +12,7 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "fileName")
     private String fileName;
@@ -65,11 +63,11 @@ public class Recipe {
 
     //Extending arrays
 
-//    @OneToMany(
-//            targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Ingredients.class,
-//            mappedBy = "recipe",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true,
-//            fetch = FetchType.EAGER)
-//    private List<Ingredients> ingredients;
+    @OneToMany(
+            targetEntity = Ingredient.class,
+            mappedBy = "recipe",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    private List<Ingredient> ingredients;
 }

@@ -4,6 +4,5 @@ import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
-//    Recipe findRecipeId(Long recipeId);
 }
 

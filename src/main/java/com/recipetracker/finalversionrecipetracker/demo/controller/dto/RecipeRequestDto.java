@@ -1,6 +1,7 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
 //import com.recipetracker.finalversionrecipetracker.demo.model.Ingredients;
+import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +24,6 @@ public class RecipeRequestDto {
     private boolean vegan;
     private boolean vegetarian;
     private boolean spicy;
-//    private List<Ingredients> ingredients;
+    private List<Ingredient> ingredient;
 //    private List<Directions> directions;
 }
