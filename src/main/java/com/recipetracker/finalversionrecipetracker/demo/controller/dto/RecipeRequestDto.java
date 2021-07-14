@@ -1,7 +1,8 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
-//import com.recipetracker.finalversionrecipetracker.demo.model.Ingredients;
-import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
+//import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
+//import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
+//import com.recipetracker.finalversionrecipetrackertracker.demo.model.Ingredient;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,7 @@ public class RecipeRequestDto {
     private Long id;
     private String title;
     private String username;
+    private String userCountry;
     private String description;
     private MultipartFile file;
     private String country;
@@ -24,6 +26,10 @@ public class RecipeRequestDto {
     private boolean vegan;
     private boolean vegetarian;
     private boolean spicy;
-    private List<Ingredient> ingredient;
-//    private List<Directions> directions;
+    private boolean poultry;
+    private List<IngredientRequestDto> ingredients;
+//    private List<Direction> directions;
+
+    
 }
+

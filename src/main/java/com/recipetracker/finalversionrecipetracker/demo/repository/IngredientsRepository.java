@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface IngredientsRepository extends JpaRepository<Ingredient, Long> {
     List<Ingredient> getIngredientsByRecipeId(Long id);
-
 }

@@ -69,11 +69,7 @@ public class IngredientsServiceImpl implements IngredientsService {
             recipe.getIngredients().add(ingredients);
             recipeRepository.save(recipe);
             return ingredientsRepository.save(ingredients);
-        } else {
-//            throw new Exception()
-        }
-
-        return null;
+        } else throw new NotFoundException();
     }
 
     @Override
