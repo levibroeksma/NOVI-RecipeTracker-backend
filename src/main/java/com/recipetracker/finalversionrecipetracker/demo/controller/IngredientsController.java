@@ -51,7 +51,7 @@ public class IngredientsController {
         return ingredients;
     }
 
-    @PostMapping("saveingredients")
+    @PostMapping("save_ingredients")
     public Ingredient addIngredients (@RequestBody IngredientsRequest ingredientsRequest){
         return ingredientsService.addIngredients(ingredientsRequest);
     }

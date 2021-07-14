@@ -44,14 +44,6 @@ public class User {
             fetch = FetchType.EAGER)
     private Set<com.recipetracker.finalversionrecipetracker.demo.model.Authority> authorities = new HashSet<>();
 
-//    @OneToMany(
-//            targetEntity = com.recipetracker.finalversionrecipetracker.demo.model.Recipe.class,
-//            mappedBy = "username",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true,
-//            fetch = FetchType.EAGER)
-//    private Set<com.recipetracker.finalversionrecipetracker.demo.model.Recipe> recipes = new HashSet<>();
-
     // username
     public String getUsername() { return username; }
     public void setUsername(String username) {

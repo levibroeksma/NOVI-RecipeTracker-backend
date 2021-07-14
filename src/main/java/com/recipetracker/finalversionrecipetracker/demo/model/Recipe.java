@@ -38,6 +38,9 @@ public class Recipe {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "userCountry")
+    private String userCountry;
+
     // Booleans
 
     @Column(name = "beef")
@@ -48,6 +51,9 @@ public class Recipe {
 
     @Column(name = "pork")
     private boolean pork;
+
+    @Column(name = "poultry")
+    private boolean poultry;
 
     @Column(name = "lamb")
     private boolean lamb;
@@ -70,4 +76,12 @@ public class Recipe {
             orphanRemoval = true,
             fetch = FetchType.EAGER)
     private List<Ingredient> ingredients;
+
+//    @OneToMany(
+//            targetEntity = Direction.class,
+//            mappedBy = "recipe",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true,
+//            fetch = FetchType.EAGER)
+//    private List<Direction> directions;
 }

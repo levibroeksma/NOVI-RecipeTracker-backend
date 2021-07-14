@@ -1,6 +1,8 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
-//import com.recipetracker.finalversionrecipetracker.demo.model.Ingredients;
+//import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
+//import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
+import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +16,7 @@ public class RecipeResponseDto {
     private String mediaType;
     private String downloadUri;
     private String username;
+    private String userCountry;
     private String country;
     private String cookingTime;
     private String calories;
@@ -24,5 +27,7 @@ public class RecipeResponseDto {
     private boolean vegan;
     private boolean vegetarian;
     private boolean spicy;
-//    private List<Ingredients> ingredients;
+    private boolean poultry;
+    private List<Ingredient> ingredients;
+//    private List<Direction> directions;
 }

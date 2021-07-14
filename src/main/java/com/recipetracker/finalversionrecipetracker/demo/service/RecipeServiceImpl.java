@@ -45,37 +45,42 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Iterable<Recipe> getFiles() {
-        return repository.findAll();
+        return repository.findAllByOrderByIdDesc();
     }
 
-    public long uploadFile(RecipeRequestDto method1Dto) {
+    public long uploadFile(RecipeRequestDto recipeRequestDto) {
 
-        MultipartFile file = method1Dto.getFile();
-
-        String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
-        Path copyLocation = this.uploads.resolve(file.getOriginalFilename());
-
-        try {
-            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-        } catch (Exception e) {
-            throw new FileStorageException("Could not store file " + originalFilename + ". Please try again!");
+        MultipartFile file = recipeRequestDto.getFile();
+        String originalFilename = "";
+        Path copyLocation = null;
+        if (file != null) {
+            originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
+            copyLocation = this.uploads.resolve(file.getOriginalFilename());
+            try {
+                Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+            } catch (Exception e) {
+                throw new FileStorageException("Could not store file " + originalFilename + ". Please try again!");
+            }
         }
 
         Recipe newFileToStore = new Recipe();
         newFileToStore.setFileName(originalFilename);
-        newFileToStore.setLocation(copyLocation.toString());
-        newFileToStore.setTitle(method1Dto.getTitle());
-        newFileToStore.setDescription(method1Dto.getDescription());
-        newFileToStore.setCountry(method1Dto.getCountry());
-        newFileToStore.setCookingtime(method1Dto.getCookingTime());
-        newFileToStore.setCalories(method1Dto.getCalories());
-        newFileToStore.setBeef(method1Dto.isBeef());
-        newFileToStore.setFish(method1Dto.isFish());
-        newFileToStore.setLamb(method1Dto.isLamb());
-        newFileToStore.setPork(method1Dto.isPork());
-        newFileToStore.setVegan(method1Dto.isVegan());
-        newFileToStore.setVegetarian(method1Dto.isVegetarian());
-        newFileToStore.setSpicy(method1Dto.isSpicy());
+        newFileToStore.setUsername(recipeRequestDto.getUsername());
+        newFileToStore.setUserCountry(recipeRequestDto.getUserCountry());
+        if (copyLocation != null ) { newFileToStore.setLocation(copyLocation.toString()); }
+        newFileToStore.setTitle(recipeRequestDto.getTitle());
+        newFileToStore.setDescription(recipeRequestDto.getDescription());
+        newFileToStore.setCountry(recipeRequestDto.getCountry());
+        newFileToStore.setCookingtime(recipeRequestDto.getCookingTime());
+        newFileToStore.setCalories(recipeRequestDto.getCalories());
+        newFileToStore.setBeef(recipeRequestDto.isBeef());
+        newFileToStore.setFish(recipeRequestDto.isFish());
+        newFileToStore.setLamb(recipeRequestDto.isLamb());
+        newFileToStore.setPork(recipeRequestDto.isPork());
+        newFileToStore.setVegan(recipeRequestDto.isVegan());
+        newFileToStore.setVegetarian(recipeRequestDto.isVegetarian());
+        newFileToStore.setSpicy(recipeRequestDto.isSpicy());
+//        newFileToStore.setIngredients(recipeRequestDto.getIngredients());
         Recipe saved = repository.save(newFileToStore);
 
         return saved.getId();
@@ -113,6 +118,8 @@ public class RecipeServiceImpl implements RecipeService {
             RecipeResponseDto responseDto = new RecipeResponseDto();
             responseDto.setFileName(stored.get().getFileName());
             responseDto.setTitle(stored.get().getTitle());
+            responseDto.setUsername(stored.get().getUsername());
+            responseDto.setUserCountry(stored.get().getUserCountry());
             responseDto.setDescription(stored.get().getDescription());
             responseDto.setCountry(stored.get().getCountry());
             responseDto.setCalories(stored.get().getCalories());
@@ -124,6 +131,7 @@ public class RecipeServiceImpl implements RecipeService {
             responseDto.setVegetarian(stored.get().isVegetarian());
             responseDto.setSpicy(stored.get().isSpicy());
             responseDto.setDownloadUri(uri.toString());
+            responseDto.setIngredients(stored.get().getIngredients());
             return responseDto;
         }
         else {
