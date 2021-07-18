@@ -12,11 +12,8 @@ public class Ingredient {
 
     private String name;
 
-    @Column(name = "recipe_id")
-    private Long recipeId;
-
     @ManyToOne
-    @JoinColumn(name = "recipe_id",insertable = false, updatable = false)
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
     public long getId() {
@@ -43,10 +40,5 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
-    public void setRecipeId(Long recipeId) {
-    }
 
-    public Long getRecipeId() {
-        return recipeId;
-    }
 }

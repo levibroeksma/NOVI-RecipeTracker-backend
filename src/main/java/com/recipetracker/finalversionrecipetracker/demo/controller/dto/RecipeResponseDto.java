@@ -1,33 +1,34 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
 //import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
-//import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Data
 public class RecipeResponseDto {
-    private Long id;
-    private String title;
-    private String description;
-    private String fileName;
-    private String mediaType;
-    private String downloadUri;
-    private String username;
-    private String userCountry;
-    private String country;
-    private String cookingTime;
-    private String calories;
-    private boolean beef;
-    private boolean fish;
-    private boolean pork;
-    private boolean lamb;
-    private boolean vegan;
-    private boolean vegetarian;
-    private boolean spicy;
-    private boolean poultry;
-    private List<Ingredient> ingredients;
-//    private List<Direction> directions;
+    public Long id;
+    public String title;
+    public String description;
+    public MultipartFile file;
+    public String fileName;
+    public String mediaType;
+    public String downloadUri;
+    public String username;
+    public String userCountry;
+    public String country;
+    public String cookingTime;
+    public String calories;
+    public boolean beef;
+    public boolean fish;
+    public boolean pork;
+    public boolean lamb;
+    public boolean vegan;
+    public boolean vegetarian;
+    public boolean spicy;
+    public boolean poultry;
+    public String ingredients;
+    public String directions;
 }

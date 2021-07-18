@@ -23,9 +23,6 @@ public class UserServiceImpl implements com.recipetracker.finalversionrecipetrac
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    private AuthorityRepository authorityRepository;
-
     @Override
     public Collection<User> getUsers() {
         return userRepository.findAll();

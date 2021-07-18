@@ -1,9 +1,14 @@
 package com.recipetracker.finalversionrecipetracker.demo.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeRequestDto;
 import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeResponseDto;
 import com.recipetracker.finalversionrecipetracker.demo.exceptions.FileStorageException;
 import com.recipetracker.finalversionrecipetracker.demo.exceptions.RecordNotFoundException;
+import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
+import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import com.recipetracker.finalversionrecipetracker.demo.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +27,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
+
+    private ObjectMapper objectMapper;
 
     @Value("${app.upload.dir:${user.home}}")
     private String uploadDirectory;  // relative to root
@@ -48,7 +56,7 @@ public class RecipeServiceImpl implements RecipeService {
         return repository.findAllByOrderByIdDesc();
     }
 
-    public long uploadFile(RecipeRequestDto recipeRequestDto) {
+    public long uploadFile(RecipeRequestDto recipeRequestDto) throws JsonProcessingException {
 
         MultipartFile file = recipeRequestDto.getFile();
         String originalFilename = "";
@@ -80,7 +88,20 @@ public class RecipeServiceImpl implements RecipeService {
         newFileToStore.setVegan(recipeRequestDto.isVegan());
         newFileToStore.setVegetarian(recipeRequestDto.isVegetarian());
         newFileToStore.setSpicy(recipeRequestDto.isSpicy());
-//        newFileToStore.setIngredients(recipeRequestDto.getIngredients());
+        objectMapper = new ObjectMapper();
+
+        List<Ingredient> listIngredients = objectMapper.readValue(recipeRequestDto.getIngredients(), new TypeReference<List<Ingredient>>(){});
+        for (Ingredient ingredient: listIngredients) {
+            ingredient.setRecipe(newFileToStore);
+            newFileToStore.getIngredients().add(ingredient);
+        }
+        objectMapper = new ObjectMapper();
+
+        List<Direction> listDirections = objectMapper.readValue(recipeRequestDto.getDirections(), new TypeReference<List<Direction>>(){});
+        for (Direction direction: listDirections) {
+            direction.setRecipe(newFileToStore);
+            newFileToStore.getDirections().add(direction);
+        }
         Recipe saved = repository.save(newFileToStore);
 
         return saved.getId();
@@ -99,7 +120,6 @@ public class RecipeServiceImpl implements RecipeService {
             catch (IOException ex) {
                 throw new RuntimeException("File not found");
             }
-
             repository.deleteById(id);
         }
         else {
@@ -131,7 +151,8 @@ public class RecipeServiceImpl implements RecipeService {
             responseDto.setVegetarian(stored.get().isVegetarian());
             responseDto.setSpicy(stored.get().isSpicy());
             responseDto.setDownloadUri(uri.toString());
-            responseDto.setIngredients(stored.get().getIngredients());
+//            responseDto.setIngredients(stored.get().getIngredients());
+//            responseDto.setDirections(stored.get().getDirections());
             return responseDto;
         }
         else {
@@ -158,8 +179,6 @@ public class RecipeServiceImpl implements RecipeService {
         else {
             throw new RecordNotFoundException();
         }
-
         return null;
     }
-
 }

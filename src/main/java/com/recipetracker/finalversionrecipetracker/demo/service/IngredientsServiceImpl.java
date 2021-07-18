@@ -29,9 +29,7 @@ public class IngredientsServiceImpl implements IngredientsService {
     public List<Object> getAllIngredientsByRecipeId(Long id) {
         List<Ingredient> ingredientsList = ingredientsRepository.findAll();
         List<Object> ingredientsByRecipe = new ArrayList<>();
-        for (int i = 0; i < ingredientsList.size(); i++) {
-            if (ingredientsList.get(i).getRecipeId()==id) ingredientsByRecipe.add(ingredientsList.get(i));
-        }
+
         return ingredientsByRecipe;
     }
 
