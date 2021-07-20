@@ -1,11 +1,7 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
-//import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
-import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @Data
 public class RecipeRequestDto {

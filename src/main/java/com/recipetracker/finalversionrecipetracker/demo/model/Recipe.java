@@ -79,8 +79,7 @@ public class Recipe {
             targetEntity = Ingredient.class,
             mappedBy = "recipe",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
+            orphanRemoval = true)
     @JsonIgnoreProperties("recipe")
     private List<Ingredient> ingredients = new ArrayList<>();
 
@@ -88,8 +87,7 @@ public class Recipe {
             targetEntity = Direction.class,
             mappedBy = "recipe",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
+            orphanRemoval = true)
     @JsonIgnoreProperties("recipe")
     private List<Direction> directions = new ArrayList<>();
 }

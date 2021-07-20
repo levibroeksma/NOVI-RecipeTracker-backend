@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin
@@ -41,8 +42,8 @@ public class IngredientsController {
     }
 
     @GetMapping("{id}/ingredients")
-    public List<Ingredient> getIngredientsByRecipeId(@PathVariable("id") Long recipeId) {
-        return ingredientsService.getIngredientsByRecipeId(recipeId);
+    public ResponseEntity<List<Ingredient>>  getIngredientsByRecipeId(@PathVariable("id") Long recipeId) {
+        return ResponseEntity.ok(Arrays.asList(new Ingredient()));
     }
 
     @PostMapping

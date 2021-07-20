@@ -151,8 +151,8 @@ public class RecipeServiceImpl implements RecipeService {
             responseDto.setVegetarian(stored.get().isVegetarian());
             responseDto.setSpicy(stored.get().isSpicy());
             responseDto.setDownloadUri(uri.toString());
-//            responseDto.setIngredients(stored.get().getIngredients());
-//            responseDto.setDirections(stored.get().getDirections());
+            responseDto.setIngredients(stored.get().getIngredients());
+            responseDto.setDirections(stored.get().getDirections());
             return responseDto;
         }
         else {
