@@ -2,6 +2,7 @@ package com.recipetracker.finalversionrecipetracker.demo.controller.dto;
 
 import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
 import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
+import com.recipetracker.finalversionrecipetracker.demo.model.Review;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,4 +31,5 @@ public class RecipeResponseDto {
     public boolean poultry;
     public List<Ingredient> ingredients;
     public List<Direction> directions;
+    public List<Review> reviews;
 }

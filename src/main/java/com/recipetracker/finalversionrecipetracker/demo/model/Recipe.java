@@ -90,4 +90,13 @@ public class Recipe {
             orphanRemoval = true)
     @JsonIgnoreProperties("recipe")
     private List<Direction> directions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "recipe",
+            targetEntity = Review.class,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("recipe")
+    private List<Review> reviews;
+
 }

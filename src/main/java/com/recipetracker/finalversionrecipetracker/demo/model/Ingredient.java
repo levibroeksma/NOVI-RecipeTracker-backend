@@ -13,7 +13,7 @@ public class Ingredient {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "recipe_id")
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
     public long getId() {
@@ -39,6 +39,5 @@ public class Ingredient {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-
 
 }

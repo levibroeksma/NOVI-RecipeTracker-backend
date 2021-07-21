@@ -1,6 +1,7 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "directions")
@@ -10,10 +11,11 @@ public class Direction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Size(max = 1000)
     private String name;
 
     @ManyToOne
-//    @JoinColumn(name = "recipe_id")
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
     public long getId() {

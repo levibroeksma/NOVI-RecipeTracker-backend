@@ -153,6 +153,7 @@ public class RecipeServiceImpl implements RecipeService {
             responseDto.setDownloadUri(uri.toString());
             responseDto.setIngredients(stored.get().getIngredients());
             responseDto.setDirections(stored.get().getDirections());
+            responseDto.setReviews(stored.get().getReviews());
             return responseDto;
         }
         else {

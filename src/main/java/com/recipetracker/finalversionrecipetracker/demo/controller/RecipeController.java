@@ -57,5 +57,4 @@ public class RecipeController {
             return ResponseEntity.badRequest().build();
         }
     }
-
 }
