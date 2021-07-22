@@ -9,7 +9,6 @@ import com.recipetracker.finalversionrecipetracker.demo.requests.DirectionsReque
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,13 +23,6 @@ public class DirectionsServiceImpl implements DirectionsService {
     @Autowired
     public DirectionsServiceImpl(DirectionsRepository directionsRepository) {
         this.directionsRepository = directionsRepository;
-    }
-
-    public List<Object> getAllDirectionsByRecipeId(Long id) {
-        List<Direction> directionsList = directionsRepository.findAll();
-        List<Object> directionsByRecipe = new ArrayList<>();
-
-        return directionsByRecipe;
     }
 
     @Override
@@ -68,10 +60,5 @@ public class DirectionsServiceImpl implements DirectionsService {
             recipeRepository.save(recipe);
             return directionsRepository.save(directions);
         } else throw new NotFoundException();
-    }
-
-    @Override
-    public List<Direction> getDirectionsByRecipeId(Long id) {
-        return directionsRepository.getDirectionsByRecipeId(id);
     }
 }

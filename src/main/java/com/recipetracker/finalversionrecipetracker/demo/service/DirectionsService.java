@@ -6,11 +6,9 @@ import com.recipetracker.finalversionrecipetracker.demo.requests.DirectionsReque
 import java.util.List;
 
 public interface DirectionsService {
-
     List<Direction> getAllDirections ();
     Direction getDirections(Long id);
     Direction saveDirections(Direction direction);
     void deleteDirections(Long id);
     Direction addDirections(DirectionsRequest directionsRequest);
-    List<Direction> getDirectionsByRecipeId (Long id);
 }

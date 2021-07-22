@@ -2,10 +2,6 @@ package com.recipetracker.finalversionrecipetracker.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -74,7 +70,7 @@ public class Recipe {
     private boolean spicy;
 
     //Extending arrays
-//
+
     @OneToMany(
             targetEntity = Ingredient.class,
             mappedBy = "recipe",
@@ -91,11 +87,11 @@ public class Recipe {
     @JsonIgnoreProperties("recipe")
     private List<Direction> directions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "recipe",
+    @OneToMany(
             targetEntity = Review.class,
+            mappedBy = "recipe",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
+            orphanRemoval = true)
     @JsonIgnoreProperties("recipe")
     private List<Review> reviews;
 

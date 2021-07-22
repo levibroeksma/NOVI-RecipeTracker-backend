@@ -6,11 +6,9 @@ import com.recipetracker.finalversionrecipetracker.demo.requests.IngredientsRequ
 import java.util.List;
 
 public interface IngredientsService {
-
     List<Ingredient> getAllIngredients ();
     Ingredient getIngredients(Long id);
     Ingredient saveIngredients(Ingredient ingredient);
     void deleteIngredients(Long id);
     Ingredient addIngredients(IngredientsRequest ingredientsRequest);
-    List<Ingredient> getIngredientsByRecipeId (Long id);
 }

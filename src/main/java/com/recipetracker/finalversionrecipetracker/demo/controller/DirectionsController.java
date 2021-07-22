@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin
@@ -41,23 +40,18 @@ public class DirectionsController {
         return directions;
     }
 
-    @GetMapping("{id}/directions")
-    public ResponseEntity<List<Direction>> getDirectionsByRecipeId(@PathVariable("id") Long recipeId) {
-        return ResponseEntity.ok(Arrays.asList(new Direction()));
-    }
-
     @PostMapping
     public Direction saveDirections(@RequestBody Direction directionOne) {
         var directions = directionsService.saveDirections(directionOne);
         return directions;
     }
 
-    @PostMapping("save_directions")
+    @PostMapping("/save_directions")
     public Direction addDirections (@RequestBody DirectionsRequest directionsRequest){
         return directionsService.addDirections(directionsRequest);
     }
 
-    @DeleteMapping({"{id}"})
+    @DeleteMapping({"/{id}"})
     public ResponseEntity<Object> deleteDirections(@PathVariable("id") Long id) throws IOException {
         directionsService.deleteDirections(id);
         return ResponseEntity.noContent().build();
