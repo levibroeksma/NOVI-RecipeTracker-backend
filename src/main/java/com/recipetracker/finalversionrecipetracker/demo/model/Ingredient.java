@@ -10,7 +10,7 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    private String ingredientName;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
@@ -25,11 +25,11 @@ public class Ingredient {
     }
 
     public String getName() {
-        return name;
+        return ingredientName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.ingredientName = name;
     }
 
     public Recipe getRecipe() {
