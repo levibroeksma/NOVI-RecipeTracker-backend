@@ -37,8 +37,8 @@ INSERT INTO directions (id, direction_name, recipe_id) VALUES (5, 'Once the liqu
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (6, 'Prepare the avocado sauce (I like to do this while the chicken is pressure cooking): In a food processor, blend together the avocado, Greek yogurt, 2 tablespoons lime juice, and salt until smooth. Taste and add additional salt or lime juice as desired.', 1001);
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (7, 'To serve: Fill the shells or tortillas with the chicken, drizzle with avocado sauce, and add any desired toppings. Enjoy immediately.', 1001);
 
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (1, 'This was amazing, will definitely make this again. It was a big hit with the kids as well', 1001, 5, 'netherlands', 'user');
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (2, 'One of my favorites so far, delicious!', 1001, 4, 'netherlands', 'Levi');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (100, 'This was amazing, will definitely make this again. It was a big hit with the kids as well', 1001, 5, 'netherlands', 'user');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (101, 'One of my favorites so far, delicious!', 1001, 4, 'netherlands', 'Levi');
 
 -- Example recipe two
 INSERT INTO recipes (id, beef, fish, poultry, lamb, vegan, vegetarian, pork, spicy, calories, cookingtime, country, description, file_name, location, title, username, user_country)
@@ -55,8 +55,8 @@ INSERT INTO directions (id, direction_name, recipe_id) VALUES (8, 'Put the vineg
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (9, 'In the meantime, cut the habaneros in thin rings of roughly 3 mm. (I recommend using cloves, you dont want to touch anything with habanero hands)', 1002);
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (10, 'Add the habaneros and mustard to an empty jar. Then pour the vinegar mixture over it. Let it cool down and put in the fridge. They are best if you leave them in there for at least 3 days.', 1002);
 
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (3, 'Waaaaaay to spicy for my taste, I cant believe that people like to eat this willingly.', 1002, 1, 'netherlands', 'user');
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (4, 'Holy Mole, these are spicy, however, they give a really nice kick to your taco!', 1002, 3, 'netherlands', 'Levi');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (102, 'Waaaaaay to spicy for my taste, I cant believe that people like to eat this willingly.', 1002, 1, 'netherlands', 'user');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (103, 'Holy Mole, these are spicy, however, they give a really nice kick to your taco!', 1002, 3, 'netherlands', 'Levi');
 
 -- Example recipe three
 INSERT INTO recipes (id, beef, fish, poultry, lamb, vegan, vegetarian, pork, spicy, calories, cookingtime, country, description, file_name, location, title, username, user_country)
@@ -73,12 +73,12 @@ INSERT INTO ingredients (id, ingredient_name, recipe_id) VALUES (23, '1 can of c
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (11, 'Put all your ingredients (the whole egg as well), except the chipotle in a small high measuring cup. Put in your hand mixer and while mixing, slowly pull up your mixer to the surface of you mixture. By the time you reach the top, your mayonaise is finished.', 1003);
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (12, 'Add the chipotles to your mayonaise and mix well.', 1003);
 
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (5, 'Never knew that mayonaise was so easy to make. I will do this much more often to impress my dinner guests.', 1003, 5, 'netherlands', 'user');
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (6, 'Amazing!', 1003, 3, 'netherlands', 'Levi');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (104, 'Never knew that mayonaise was so easy to make. I will do this much more often to impress my dinner guests.', 1003, 5, 'netherlands', 'user');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (105, 'Amazing!', 1003, 3, 'netherlands', 'Levi');
 
 -- Example recipe four
 INSERT INTO recipes (id, beef, fish, poultry, lamb, vegan, vegetarian, pork, spicy, calories, cookingtime, country, description, file_name, location, title, username, user_country)
-    VALUES (1004, true, false, false, false, false, false, true, true, 500, 60, 'netherlands', 'Perfect Tagliatelle with a creamy, rich mushroom sauce' , 'tagliatelle_mushroom.jpeg', 'uploads/tagliatelle_mushroom.jpeg', 'Tagliatelle with a creamy mushroom sauce', 'Levi', 'netherlands');
+    VALUES (1004, true, false, false, false, false, false, true, true, 500, 60, 'italy', 'Perfect Tagliatelle with a creamy, rich mushroom sauce' , 'tagliatelle_mushroom.jpeg', 'uploads/tagliatelle_mushroom.jpeg', 'Tagliatelle with a creamy mushroom sauce', 'Levi', 'netherlands');
 
 INSERT INTO ingredients (id, ingredient_name, recipe_id) VALUES (24, '250 ml of cream (I use non sweetened whipping cream)', 1004);
 INSERT INTO ingredients (id, ingredient_name, recipe_id) VALUES (25, '400 grams of chestnut mushrooms', 1004);
@@ -100,5 +100,5 @@ INSERT INTO directions (id, direction_name, recipe_id) VALUES (18, 'Always aim f
 INSERT INTO directions (id, direction_name, recipe_id) VALUES (19, 'Add some of your finely chopped parsley when plated to give it that extra look.', 1004);
 
 
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (7, 'So quick, so tasty, I recommend!', 1004, 5, 'netherlands', 'user');
-INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (8, 'I want to warn everybody, watch yourself, you easily overeat with this delicious dish!', 1004, 5, 'netherlands', 'Levi');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (106, 'So quick, so tasty, I recommend!', 1004, 5, 'netherlands', 'user');
+INSERT INTO reviews (id, review, recipe_id, stars, user_country, username) VALUES (107, 'I want to warn everybody, watch yourself, you easily overeat with this delicious dish!', 1004, 5, 'netherlands', 'Levi');
