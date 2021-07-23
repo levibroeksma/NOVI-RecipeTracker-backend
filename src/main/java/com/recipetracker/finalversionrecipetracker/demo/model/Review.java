@@ -2,7 +2,6 @@ package com.recipetracker.finalversionrecipetracker.demo.model;
 
 import javax.persistence.*;
 
-//@SuppressWarnings("JpaAttributeTypeInspection")
 @Entity
 @Table(name = "reviews")
 public class Review {
