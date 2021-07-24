@@ -9,6 +9,6 @@ public interface IngredientsService {
     List<Ingredient> getAllIngredients ();
     Ingredient getIngredients(Long id);
     Ingredient saveIngredients(Ingredient ingredient);
-    void deleteIngredients(Long id);
+    List<Ingredient> deleteIngredients(Long id);
     Ingredient addIngredients(IngredientsRequest ingredientsRequest);
 }

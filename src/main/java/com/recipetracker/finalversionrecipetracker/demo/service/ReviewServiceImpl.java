@@ -29,7 +29,9 @@ public class ReviewServiceImpl implements ReviewService{
         var optionalReview = reviewRepository.findById(id);
         if (optionalReview.isPresent()) {
             return optionalReview.get();
-        } else throw new RecordNotFoundException();
+        }  else {
+            throw new RecordNotFoundException("Review has not been found.");
+        }
     }
 
     @Override

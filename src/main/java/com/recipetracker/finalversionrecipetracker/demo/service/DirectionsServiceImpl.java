@@ -1,6 +1,6 @@
 package com.recipetracker.finalversionrecipetracker.demo.service;
 
-import com.recipetracker.finalversionrecipetracker.demo.exceptions.NotFoundException;
+import com.recipetracker.finalversionrecipetracker.demo.exceptions.RecordNotFoundException;
 import com.recipetracker.finalversionrecipetracker.demo.model.Direction;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import com.recipetracker.finalversionrecipetracker.demo.repository.DirectionsRepository;
@@ -35,7 +35,7 @@ public class DirectionsServiceImpl implements DirectionsService {
         var optionalDirections = directionsRepository.findById(id);
         if (optionalDirections.isPresent()) {
             return optionalDirections.get();
-        } else throw new NotFoundException();
+        } else throw new RecordNotFoundException();
     }
 
     @Override
@@ -59,6 +59,6 @@ public class DirectionsServiceImpl implements DirectionsService {
             recipe.getDirections().add(directions);
             recipeRepository.save(recipe);
             return directionsRepository.save(directions);
-        } else throw new NotFoundException();
+        } else throw new RecordNotFoundException();
     }
 }

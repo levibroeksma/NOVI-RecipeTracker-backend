@@ -1,6 +1,6 @@
 package com.recipetracker.finalversionrecipetracker.demo.service;
 
-import com.recipetracker.finalversionrecipetracker.demo.exceptions.NotFoundException;
+import com.recipetracker.finalversionrecipetracker.demo.exceptions.RecordNotFoundException;
 import com.recipetracker.finalversionrecipetracker.demo.model.Ingredient;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
 import com.recipetracker.finalversionrecipetracker.demo.repository.IngredientsRepository;
@@ -35,7 +35,7 @@ public class IngredientsServiceImpl implements IngredientsService {
         var optionalIngredients = ingredientsRepository.findById(id);
         if (optionalIngredients.isPresent()) {
             return optionalIngredients.get();
-        } else throw new NotFoundException();
+        } else throw new RecordNotFoundException();
     }
 
     @Override
@@ -44,8 +44,9 @@ public class IngredientsServiceImpl implements IngredientsService {
     }
 
     @Override
-    public void deleteIngredients(Long id) {
+    public List<Ingredient> deleteIngredients(Long id) {
         ingredientsRepository.deleteById(id);
+        return null;
     }
 
     public Ingredient addIngredients(IngredientsRequest ingredientsRequest) {
@@ -59,7 +60,7 @@ public class IngredientsServiceImpl implements IngredientsService {
             recipe.getIngredients().add(ingredients);
             recipeRepository.save(recipe);
             return ingredientsRepository.save(ingredients);
-        } else throw new NotFoundException();
+        } else throw new RecordNotFoundException();
     }
 
 }
