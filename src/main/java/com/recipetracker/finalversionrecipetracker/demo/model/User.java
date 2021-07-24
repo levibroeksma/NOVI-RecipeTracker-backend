@@ -1,11 +1,14 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@CrossOrigin
 public class User {
 
     @Id

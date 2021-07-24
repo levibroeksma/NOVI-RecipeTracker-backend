@@ -40,23 +40,18 @@ public class IngredientsController {
         return ingredients;
     }
 
-    @GetMapping("{id}/ingredients")
-    public List<Ingredient> getIngredientsByRecipeId(@PathVariable("id") Long recipeId) {
-        return ingredientsService.getIngredientsByRecipeId(recipeId);
-    }
-
     @PostMapping
     public Ingredient saveIngredients(@RequestBody Ingredient ingredientOne) {
         var ingredients = ingredientsService.saveIngredients(ingredientOne);
         return ingredients;
     }
 
-    @PostMapping("save_ingredients")
+    @PostMapping("/save_ingredients")
     public Ingredient addIngredients (@RequestBody IngredientsRequest ingredientsRequest){
         return ingredientsService.addIngredients(ingredientsRequest);
     }
 
-    @DeleteMapping({"{id}"})
+    @DeleteMapping({"/{id}"})
     public ResponseEntity<Object> deleteIngredients(@PathVariable("id") Long id) throws IOException {
         ingredientsService.deleteIngredients(id);
         return ResponseEntity.noContent().build();

@@ -9,7 +9,6 @@ import com.recipetracker.finalversionrecipetracker.demo.requests.IngredientsRequ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,15 +23,6 @@ public class IngredientsServiceImpl implements IngredientsService {
     @Autowired
     public IngredientsServiceImpl(IngredientsRepository ingredientsRepository) {
         this.ingredientsRepository = ingredientsRepository;
-    }
-
-    public List<Object> getAllIngredientsByRecipeId(Long id) {
-        List<Ingredient> ingredientsList = ingredientsRepository.findAll();
-        List<Object> ingredientsByRecipe = new ArrayList<>();
-        for (int i = 0; i < ingredientsList.size(); i++) {
-            if (ingredientsList.get(i).getRecipeId()==id) ingredientsByRecipe.add(ingredientsList.get(i));
-        }
-        return ingredientsByRecipe;
     }
 
     @Override
@@ -72,8 +62,4 @@ public class IngredientsServiceImpl implements IngredientsService {
         } else throw new NotFoundException();
     }
 
-    @Override
-    public List<Ingredient> getIngredientsByRecipeId(Long id) {
-        return ingredientsRepository.getIngredientsByRecipeId(id);
-    }
 }

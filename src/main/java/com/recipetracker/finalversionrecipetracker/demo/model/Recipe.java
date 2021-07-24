@@ -1,8 +1,10 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -73,15 +75,24 @@ public class Recipe {
             targetEntity = Ingredient.class,
             mappedBy = "recipe",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private List<Ingredient> ingredients;
+            orphanRemoval = true)
+    @JsonIgnoreProperties("recipe")
+    private List<Ingredient> ingredients = new ArrayList<>();
 
-//    @OneToMany(
-//            targetEntity = Direction.class,
-//            mappedBy = "recipe",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true,
-//            fetch = FetchType.EAGER)
-//    private List<Direction> directions;
+    @OneToMany(
+            targetEntity = Direction.class,
+            mappedBy = "recipe",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("recipe")
+    private List<Direction> directions = new ArrayList<>();
+
+    @OneToMany(
+            targetEntity = Review.class,
+            mappedBy = "recipe",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("recipe")
+    private List<Review> reviews;
+
 }

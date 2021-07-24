@@ -1,5 +1,6 @@
 package com.recipetracker.finalversionrecipetracker.demo.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeRequestDto;
 import com.recipetracker.finalversionrecipetracker.demo.controller.dto.RecipeResponseDto;
 import com.recipetracker.finalversionrecipetracker.demo.model.Recipe;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("api/recipes")
+@RequestMapping(value = "api/recipes")
 @CrossOrigin
 public class RecipeController {
 
@@ -44,15 +45,16 @@ public class RecipeController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping(value = "",
-            produces = {MediaType.APPLICATION_JSON_VALUE} )
-    public ResponseEntity<Object> uploadRecipe(RecipeRequestDto recipeRequestDto) {
-        long newId = recipeService.uploadFile(recipeRequestDto);
+    @PostMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity<Object> uploadRecipe( RecipeRequestDto recipeRequestDto) {
+        try {
+            long newId = recipeService.uploadFile(recipeRequestDto);
+            URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                    .buildAndExpand(newId).toUri();
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(newId).toUri();
-
-        return ResponseEntity.created(location).body(location);
+            return ResponseEntity.created(location).body(location);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
-
 }

@@ -10,13 +10,10 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
-
-    @Column(name = "recipe_id")
-    private Long recipeId;
+    private String ingredientName;
 
     @ManyToOne
-    @JoinColumn(name = "recipe_id",insertable = false, updatable = false)
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
     public long getId() {
@@ -28,11 +25,11 @@ public class Ingredient {
     }
 
     public String getName() {
-        return name;
+        return ingredientName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.ingredientName = name;
     }
 
     public Recipe getRecipe() {
@@ -43,10 +40,4 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
-    public void setRecipeId(Long recipeId) {
-    }
-
-    public Long getRecipeId() {
-        return recipeId;
-    }
 }
