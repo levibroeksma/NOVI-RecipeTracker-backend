@@ -10,9 +10,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
 import java.net.URI;
 
 @RestController
@@ -25,7 +27,7 @@ public class RecipeController {
 
     @GetMapping("")
     public ResponseEntity<Object> getRecipes() {
-        Iterable<Recipe> files = recipeService.getFiles();
+        Iterable<Recipe> files = recipeService.getAllRecipes();
         return ResponseEntity.ok().body(files);
     }
 
@@ -48,7 +50,7 @@ public class RecipeController {
     @PostMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE} )
     public ResponseEntity<Object> uploadRecipe( RecipeRequestDto recipeRequestDto) {
         try {
-            long newId = recipeService.uploadFile(recipeRequestDto);
+            long newId = recipeService.uploadRecipe(recipeRequestDto);
             URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand(newId).toUri();
 
@@ -56,5 +58,12 @@ public class RecipeController {
         } catch (JsonProcessingException e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<Object> deleteRecipeById(@PathVariable("id") Long id) throws IOException {
+        recipeService.deleteRecipeById(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -9,9 +9,12 @@ import org.springframework.core.io.Resource;
 public interface RecipeService {
 
     void init();
-    Iterable<Recipe> getFiles();
+    Iterable<Recipe> getAllRecipes();
     RecipeResponseDto getFileById(long id);
-    long uploadFile(RecipeRequestDto method1Dto) throws JsonProcessingException;
+    long uploadRecipe(RecipeRequestDto method1Dto) throws JsonProcessingException;
     void deleteFile(long id);
+    void deleteRecipeById(Long id);
     Resource downloadFile(long id);
+
+//    void getRecipe(Object o);
 }

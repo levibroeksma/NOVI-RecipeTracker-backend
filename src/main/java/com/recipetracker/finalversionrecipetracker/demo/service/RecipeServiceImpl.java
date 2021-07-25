@@ -54,11 +54,11 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Iterable<Recipe> getFiles() {
+    public Iterable<Recipe> getAllRecipes() {
         return repository.findAllByOrderByIdDesc();
     }
 
-    public long uploadFile(RecipeRequestDto recipeRequestDto) throws JsonProcessingException {
+    public long uploadRecipe(RecipeRequestDto recipeRequestDto) throws JsonProcessingException {
 
         MultipartFile file = recipeRequestDto.getFile();
         String originalFilename = "";
@@ -90,6 +90,7 @@ public class RecipeServiceImpl implements RecipeService {
         newRecipeToStore.setVegan(recipeRequestDto.isVegan());
         newRecipeToStore.setVegetarian(recipeRequestDto.isVegetarian());
         newRecipeToStore.setSpicy(recipeRequestDto.isSpicy());
+
         objectMapper = new ObjectMapper();
 
         List<Ingredient> listIngredients = objectMapper.readValue(recipeRequestDto.getIngredients(), new TypeReference<List<Ingredient>>(){});
@@ -183,5 +184,10 @@ public class RecipeServiceImpl implements RecipeService {
             throw new RecordNotFoundException();
         }
         return null;
+    }
+
+    @Override
+    public void deleteRecipeById(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -5,6 +5,7 @@ import com.recipetracker.finalversionrecipetracker.demo.service.CustomUserDetail
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -48,16 +49,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/api/recipes").permitAll()
-//                .antMatchers("/api/recipes").hasRole("USER")
-//                .antMatchers("/customers/**").hasRole("USER")
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-////                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-//                .antMatchers("/users").permitAll()
-//                .antMatchers("/users/**").permitAll()
-////                .antMatchers("/users/**").hasRole("ADMIN")
-//                .antMatchers("/authenticated").authenticated()
-//                .antMatchers("/authenticate").permitAll()
                 .anyRequest().permitAll()
                 .and().cors()
                 .and()
