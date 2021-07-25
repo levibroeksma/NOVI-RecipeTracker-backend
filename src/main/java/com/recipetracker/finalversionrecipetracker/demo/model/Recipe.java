@@ -94,5 +94,4 @@ public class Recipe {
             orphanRemoval = true)
     @JsonIgnoreProperties("recipe")
     private List<Review> reviews;
-
 }

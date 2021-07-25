@@ -1,5 +1,7 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -16,6 +18,7 @@ public class Direction {
 
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Recipe recipe;
 
     public long getId() {
