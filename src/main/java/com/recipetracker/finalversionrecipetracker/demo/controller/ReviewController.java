@@ -51,8 +51,8 @@ public class ReviewController {
         return reviewService.addReview(reviewRequest);
     }
 
-    @DeleteMapping({"{id}"})
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @DeleteMapping({"/{id}"})
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> deleteReview(@PathVariable("id") Long id) throws IOException {
         reviewService.deleteReview(id);
         return ResponseEntity.noContent().build();

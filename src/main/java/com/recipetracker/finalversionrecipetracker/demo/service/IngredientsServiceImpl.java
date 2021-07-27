@@ -56,9 +56,9 @@ public class IngredientsServiceImpl implements IngredientsService {
             Ingredient ingredients = new Ingredient();
             ingredients.setName(ingredientsRequest.name);
 
-            ingredients.setRecipe(recipe);
+//            ingredients.setRecipe(recipe);
             recipe.getIngredients().add(ingredients);
-            recipeRepository.save(recipe);
+//            recipeRepository.save(recipe);
             return ingredientsRepository.save(ingredients);
         } else throw new RecordNotFoundException();
     }
