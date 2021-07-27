@@ -95,7 +95,7 @@ public class RecipeServiceImpl implements RecipeService {
 
         List<Ingredient> listIngredients = objectMapper.readValue(recipeRequestDto.getIngredients(), new TypeReference<List<Ingredient>>(){});
         for (Ingredient ingredient: listIngredients) {
-//            ingredient.setRecipe(newRecipeToStore);
+            ingredient.setRecipe(newRecipeToStore);
             newRecipeToStore.getIngredients().add(ingredient);
         }
         objectMapper = new ObjectMapper();

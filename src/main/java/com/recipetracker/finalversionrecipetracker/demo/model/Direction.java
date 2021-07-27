@@ -1,11 +1,13 @@
 package com.recipetracker.finalversionrecipetracker.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@Data
 @Table(name = "directions")
 public class Direction {
 
@@ -17,7 +19,7 @@ public class Direction {
     private String directionName;
 
     @ManyToOne
-    @JoinColumn(name = "recipe_id", nullable = false)
+    @JoinColumn(name = "recipe_id", nullable = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Recipe recipe;
 

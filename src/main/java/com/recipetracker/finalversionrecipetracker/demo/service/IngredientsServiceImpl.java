@@ -44,9 +44,8 @@ public class IngredientsServiceImpl implements IngredientsService {
     }
 
     @Override
-    public List<Ingredient> deleteIngredients(Long id) {
+    public void deleteIngredients(Long id) {
         ingredientsRepository.deleteById(id);
-        return null;
     }
 
     public Ingredient addIngredients(IngredientsRequest ingredientsRequest) {
@@ -56,11 +55,10 @@ public class IngredientsServiceImpl implements IngredientsService {
             Ingredient ingredients = new Ingredient();
             ingredients.setName(ingredientsRequest.name);
 
-//            ingredients.setRecipe(recipe);
+            ingredients.setRecipe(recipe);
             recipe.getIngredients().add(ingredients);
-//            recipeRepository.save(recipe);
+            recipeRepository.save(recipe);
             return ingredientsRepository.save(ingredients);
         } else throw new RecordNotFoundException();
     }
-
 }
