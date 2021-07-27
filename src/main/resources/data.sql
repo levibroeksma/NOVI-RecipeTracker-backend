@@ -1,6 +1,6 @@
 -- Levi details
 INSERT INTO users (username, password, enabled, email, first_name, last_name, news_letter,country)
-    VALUES ('Levi', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 'levi@broeksma.nl', 'Levi', 'Broeksma', FALSE, 'netherlands');
+    VALUES ('levi', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 'levi@broeksma.nl', 'Levi', 'Broeksma', FALSE, 'netherlands');
 INSERT INTO authorities (username, authority) VALUES ('Levi', 'USER');
 
 -- User details
